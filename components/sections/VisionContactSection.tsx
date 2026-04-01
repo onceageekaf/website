@@ -18,37 +18,28 @@ export default function VisionContactSection() {
           <h2 id="contact-heading" className="sr-only">
             Partner with us
           </h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
-              <article className="grid h-full grid-rows-[auto_1fr_auto] rounded-2xl border border-[#d7d9df] bg-white/80 p-8 md:p-9">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:items-stretch md:gap-5">
+              <article className="flex h-full min-h-[220px] flex-col rounded-2xl border border-[#d7d9df] bg-white/80 p-8 md:min-h-[360px] md:p-9">
                 <p className="text-xs font-semibold uppercase tracking-[0.11em] text-[#6b6d75]">Academic / Inventor</p>
-                <p className="mt-4 max-w-[18ch] text-2xl font-semibold leading-[1.14] tracking-[-0.03em] text-[#1f2127] md:min-h-[230px] md:text-3xl">
+                <p className="mt-4 max-w-[18ch] text-2xl font-semibold leading-[1.14] tracking-[-0.03em] text-[#1f2127] md:text-3xl">
                   The impact of your research shouldn&apos;t depend on where you work or who manages your invention.
                 </p>
-                <p className="pt-6 text-[14px] leading-relaxed tracking-[-0.01em] text-[#3f4148] md:whitespace-nowrap md:text-[15px]">
-                  ttOS is free. No limits. No conditions.
-                </p>
               </article>
 
-              <article className="grid h-full grid-rows-[auto_1fr_auto] rounded-2xl border border-[#d7d9df] bg-white/80 p-8 md:p-9">
+              <article className="flex h-full min-h-[220px] flex-col rounded-2xl border border-[#d7d9df] bg-white/80 p-8 md:min-h-[360px] md:p-9">
                 <p className="text-xs font-semibold uppercase tracking-[0.11em] text-[#6b6d75]">Technology Transfer Office</p>
-                <p className="mt-4 max-w-[18ch] text-2xl font-semibold leading-[1.14] tracking-[-0.03em] text-[#1f2127] md:min-h-[230px] md:text-3xl">
+                <p className="mt-4 max-w-[18ch] text-2xl font-semibold leading-[1.14] tracking-[-0.03em] text-[#1f2127] md:text-3xl">
                   Hiring more people to run the same system produces the same results. There&apos;s a better way.
                 </p>
-                <p className="pt-6 text-[14px] leading-relaxed tracking-[-0.01em] text-[#3f4148] md:whitespace-nowrap md:text-[15px]">
-                  ttOS is free. You only pay for what you use.
-                </p>
               </article>
 
-              <article className="grid h-full grid-rows-[auto_1fr_auto] rounded-2xl border border-[#d7d9df] bg-white/80 p-8 md:p-9">
+              <article className="flex h-full min-h-[220px] flex-col rounded-2xl border border-[#d7d9df] bg-white/80 p-8 md:min-h-[360px] md:p-9">
                 <p className="text-xs font-semibold uppercase tracking-[0.11em] text-[#6b6d75]">
                   Startup ecosystem
                 </p>
-                <p className="mt-4 max-w-[18ch] text-2xl font-semibold leading-[1.14] tracking-[-0.03em] text-[#1f2127] md:min-h-[230px] md:text-3xl">
+                <p className="mt-4 max-w-[18ch] text-2xl font-semibold leading-[1.14] tracking-[-0.03em] text-[#1f2127] md:text-3xl">
                   Universities are the biggest source of deep tech inventions and founders. They need infrastructure. We
                   are building it.
-                </p>
-                <p className="pt-6 text-[14px] leading-relaxed tracking-[-0.01em] text-[#3f4148] md:whitespace-nowrap md:text-[15px]">
-                  ttOS reduces friction for translation.
                 </p>
               </article>
           </div>
