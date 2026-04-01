@@ -623,7 +623,7 @@ export default function ProductFeaturesSection() {
           </article>
         ))}
       </div>
-      <div className="mt-8 text-center">
+      {/* <div className="mt-8 text-center">
         <Link
           href="/#product-features"
           className="text-sm font-medium text-[#2f3137] transition-colors hover:text-[#111318]"
@@ -633,7 +633,7 @@ export default function ProductFeaturesSection() {
                   {"->"}
                 </span>
         </Link>
-      </div>
+      </div> */}
     </div>
   )
 }

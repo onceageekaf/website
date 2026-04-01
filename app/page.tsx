@@ -12,6 +12,7 @@ import VisionContactSection from "@/components/sections/VisionContactSection"
 import Footer from "@/components/layout/Footer"
 import HeroExploreCTA from "@/components/elements/HeroExploreCTA"
 import { ScrollReveal } from "@/components/elements/ScrollReveal"
+import Image from "next/image"
 
 export default function page() {
   return (
@@ -142,13 +143,26 @@ export default function page() {
               <span className="text-xs font-medium text-black/55">inventor-view.ttos.ai</span>
               <div className="w-[42px]" aria-hidden="true" />
             </div>
-            <DashboardShell
-              width="full"
-              variant="inventor"
-              className="rounded-none border-0 shadow-none"
-            >
-              <InventorDashboard />
-            </DashboardShell>
+            <div className="md:hidden">
+              <Image
+                src="/dashboard-hero.png"
+                alt="ttOS dashboard preview"
+                width={2464}
+                height={1490}
+                className="block h-auto w-full"
+                sizes="100vw"
+                priority
+              />
+            </div>
+            <div className="hidden md:block">
+              <DashboardShell
+                width="full"
+                variant="inventor"
+                className="rounded-none border-0 shadow-none"
+              >
+                <InventorDashboard />
+              </DashboardShell>
+            </div>
           </div>
         </ScrollReveal>
       </section>
