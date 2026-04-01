@@ -586,7 +586,7 @@ export default function ProductFeaturesSection() {
     <div ref={rootRef} className="mx-auto max-w-7xl px-6">
       <div className="mb-12 text-center md:mb-14">
         <p className="text-xs font-medium uppercase tracking-[0.14em] text-[#55565d]">Features</p>
-        <h2 className="text-3xl font-semibold leading-tight tracking-[-0.04em] text-[#2f3137] md:text-5xl">
+        <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-[-0.04em] text-[#2f3137] md:text-5xl">
             Tech transfer made <br /> efficient, transparent, and scalable.
         </h2>
       </div>
