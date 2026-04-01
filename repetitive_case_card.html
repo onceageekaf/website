@@ -1,0 +1,88 @@
+
+<style>
+  .card { font-family: var(--font-sans); background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.5rem; max-width: 380px; }
+  .case-counter { display: flex; align-items: baseline; gap: 8px; margin-bottom: 1.25rem; }
+  .case-label { font-size: 11px; color: var(--color-text-tertiary); font-family: var(--font-mono); }
+  .case-num { font-size: 13px; font-weight: 500; color: var(--color-text-primary); font-family: var(--font-mono); }
+  .case-total { font-size: 11px; color: var(--color-text-tertiary); font-family: var(--font-mono); }
+  .progress { height: 2px; background: var(--color-border-tertiary); border-radius: 1px; margin-bottom: 1.25rem; overflow: hidden; }
+  .progress-fill { height: 100%; width: 0%; background: var(--color-text-tertiary); border-radius: 1px; transition: width 0.05s linear; }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.25rem; }
+  .pill { display: flex; align-items: center; gap: 6px; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: 20px; padding: 5px 10px; font-size: 12px; color: var(--color-text-secondary); opacity: 0; transform: translateY(4px); transition: opacity 0.2s ease, transform 0.2s ease; }
+  .pill.show { opacity: 1; transform: translateY(0); }
+  .pill-icon { width: 14px; height: 14px; opacity: 0.5; }
+  .card-footer { font-size: 11px; color: var(--color-text-tertiary); border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1rem; }
+  .card-footer span { color: var(--color-text-primary); font-weight: 500; }
+</style>
+
+<div class="card">
+  <div class="case-counter">
+    <div class="case-label">Case</div>
+    <div class="case-num" id="caseNum">001</div>
+    <div class="case-total" id="caseTotal">of 847</div>
+  </div>
+
+  <div class="progress">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <div class="pills" id="pills">
+    <div class="pill" data-i="0">
+      <svg class="pill-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6M5 5h6M5 11h4"/></svg>
+      Disclosure form
+    </div>
+    <div class="pill" data-i="1">
+      <svg class="pill-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+      Prior art search
+    </div>
+    <div class="pill" data-i="2">
+      <svg class="pill-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h10M3 8h7M3 12h5"/></svg>
+      Evaluation
+    </div>
+    <div class="pill" data-i="3">
+      <svg class="pill-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12l4-4 3 3 5-6"/></svg>
+      Market research
+    </div>
+    <div class="pill" data-i="4">
+      <svg class="pill-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="12" height="8" rx="1.5"/><path d="M5 5V3.5a3 3 0 016 0V5"/></svg>
+      NDA review
+    </div>
+    <div class="pill" data-i="5">
+      <svg class="pill-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v12M2 8h12"/></svg>
+      Agreement draft
+    </div>
+  </div>
+
+  <div class="card-footer">Same six tasks. Every case. Every time. <span>Automated by ttOS.</span></div>
+</div>
+
+<script>
+  const total = 847;
+  let current = 1;
+  let pillIndex = 0;
+  const pillEls = document.querySelectorAll('.pill');
+  const caseNum = document.getElementById('caseNum');
+  const progressFill = document.getElementById('progressFill');
+
+  function pad(n) { return String(n).padStart(3, '0'); }
+
+  function showNextPill() {
+    if (pillIndex < pillEls.length) {
+      pillEls[pillIndex].classList.add('show');
+      pillIndex++;
+      setTimeout(showNextPill, 180);
+    }
+  }
+
+  function nextCase() {
+    pillEls.forEach(p => p.classList.remove('show'));
+    pillIndex = 0;
+    current = current >= 12 ? 1 : current + 1;
+    caseNum.textContent = pad(current);
+    progressFill.style.width = ((current / total) * 100) + '%';
+    setTimeout(showNextPill, 300);
+  }
+
+  showNextPill();
+  setInterval(nextCase, 2800);
+</script>
