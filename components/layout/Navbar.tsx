@@ -46,7 +46,7 @@ export default function Navbar() {
         <div className="ml-auto flex items-center gap-2">
           {/* CTA stays visible on all sizes */}
           <Link
-            href="mailto:ash@ttos.ai"
+            href="mailto:?subject=Contact%20us"
             className="inline-flex h-9 items-center rounded-xl bg-[#2f3137] px-4 text-sm font-medium text-white shadow-[0_1px_0_rgba(0,0,0,.08),0_8px_24px_rgba(47,49,55,.28)] transition hover:bg-[#212329]"
           >
             Contact us

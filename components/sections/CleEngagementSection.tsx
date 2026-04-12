@@ -75,20 +75,21 @@ export function ManufacturingSection() {
   return (
     <section
       id="manufacturing"
-      className="relative scroll-mt-24 overflow-hidden border-t border-[#e8e8ec] bg-[#f6f6f7] py-16 md:py-24"
+      className="relative scroll-mt-24 overflow-x-clip overflow-y-visible border-t border-[#e8e8ec] bg-[#f6f6f7] py-16 md:py-24"
       aria-labelledby="manufacturing-heading"
     >
       <DotBackground />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(246,246,247,0)_42%,rgba(246,246,247,0.9)_85%,rgba(246,246,247,1)_100%)]" />
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
+      <div className="relative z-10 mx-auto min-w-0 max-w-7xl px-4 sm:px-6 lg:px-10 xl:px-8">
+        {/* SVG "af" mark above Atom Factory heading — hidden for now
         <svg
-          viewBox="0 0 980 180"
+          viewBox="0 0 320 180"
           xmlns="http://www.w3.org/2000/svg"
           role="img"
-          aria-label="AtomFactory"
+          aria-label="af"
           className="h-10 w-auto md:h-12"
         >
-          <title>AtomFactory</title>
+          <title>af</title>
           <text
             x="20"
             y="128"
@@ -98,23 +99,14 @@ export function ManufacturingSection() {
             fontStyle="italic"
             fontWeight="600"
             letterSpacing="-3"
-            opacity="0"
           >
             af
-            <animate attributeName="opacity" begin="0s" dur="700ms" from="0" to="1" fill="freeze" />
-            <animateTransform
-              attributeName="transform"
-              type="translate"
-              begin="0s"
-              dur="700ms"
-              values="0 10; 0 0"
-              fill="freeze"
-            />
           </text>
         </svg>
+        */}
         <h2
           id="manufacturing-heading"
-          className="mt-3 whitespace-nowrap text-[clamp(1.35rem,3.6vw,3rem)] font-semibold leading-tight tracking-[-0.04em] text-[#2f3137]"
+          className="mt-3 min-w-0 max-w-full text-[clamp(1.25rem,3.2vw,3rem)] font-semibold leading-tight tracking-[-0.04em] text-[#2f3137]"
         >
           <span
             style={{ fontFamily: "Cormorant Garamond, EB Garamond, Baskerville, Georgia, serif" }}
@@ -142,8 +134,8 @@ export function ManufacturingSection() {
             <span className="font-semibold">It&apos;s manufacturing them.</span>
           </p>
         </div>
-        <div className="mt-16 grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-x-14 lg:gap-y-10">
-          <div>
+        <div className="mt-16 grid min-w-0 grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10 xl:gap-x-14">
+          <div className="min-w-0">
             <h2 className="text-3xl font-semibold leading-tight tracking-[-0.04em] text-[#2f3137] md:text-5xl">
               2,000 samples.
               <br />
@@ -179,7 +171,9 @@ export function ManufacturingSection() {
               ))}
             </div>
           </div>
-          <SourcingResultsCard />
+          <div className="min-w-0">
+            <SourcingResultsCard />
+          </div>
         </div>
       </div>
     </section>

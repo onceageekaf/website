@@ -11,9 +11,9 @@ export type TimeoutRoutingRule = {
 }
 
 export const DEFAULT_TIMEOUT_RULE: TimeoutRoutingRule = {
-  idlePhrase: "No response",
+  idlePhrase: "No reply",
   afterDisplay: "3 days",
-  outcomePhrase: "Auto-delegate",
+  outcomePhrase: "Delegate",
 }
 
 export type RoutingPhase = "signing" | "awaiting" | "pending"
@@ -48,7 +48,7 @@ export const SIGNATURE_ROUTING_STEPS: {
   },
   {
     n: 4,
-    title: "Auto-delegate if no action",
+    title: "Auto-delegate",
     sub: "Dr. R. Mehta (Acting)",
     status: "Routes in 3 days",
     phase: "pending",
@@ -75,23 +75,49 @@ const phaseStatus: Record<RoutingPhase, string> = {
   pending: "border-[#e3e4e8] bg-[#f4f4f6] text-[#5c5d64]",
 }
 
+/** CLE-style keyword pills for light backgrounds (same hue families as LogicTag, no near-black fill). */
+const RULE_KEYWORD_PILL: Record<"IF" | "AFTER" | "THEN", string> = {
+  IF: "border-amber-300/90 bg-amber-100 text-amber-950",
+  AFTER: "border-emerald-300/90 bg-emerald-100 text-emerald-950",
+  THEN: "border-blue-300/90 bg-blue-100 text-blue-950",
+}
+
+function RuleKeywordPill({ kind, children }: { kind: keyof typeof RULE_KEYWORD_PILL; children: React.ReactNode }) {
+  return (
+    <span
+      className={cn(
+        "inline-flex shrink-0 items-center rounded-md border px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wide sm:text-[9px]",
+        RULE_KEYWORD_PILL[kind]
+      )}
+    >
+      {children}
+    </span>
+  )
+}
+
 function LogicPill({
   children,
   tone,
+  compact,
 }: {
   children: React.ReactNode
   tone: "neutral" | "accent" | "numeric"
+  compact?: boolean
 }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-md border px-2 py-0.5 text-[11px] font-medium leading-none",
+        "inline-flex max-w-full min-w-0 items-center rounded-md border font-medium leading-tight",
+        compact ? "px-1 py-0.5 text-[8px] sm:px-1.5 sm:text-[9px]" : "px-2 py-0.5 text-[11px] leading-none",
         tone === "neutral" && "border-black/[0.08] bg-[#efeff2] text-[#3d3f46]",
         tone === "accent" && "border-violet-200/80 bg-violet-100/90 text-violet-950",
         tone === "numeric" && "border-sky-200/90 bg-sky-100/95 text-sky-950 tabular-nums"
       )}
     >
-      {children}
+      {/* Compact pills live in narrow columns: wrap instead of truncate */}
+      <span className={cn("min-w-0", compact ? "whitespace-normal break-words text-left" : "truncate")}>
+        {children}
+      </span>
     </span>
   )
 }
@@ -101,14 +127,17 @@ function StepBlock({
   sub,
   status,
   phase,
+  shrinkToContent = false,
 }: {
   title: React.ReactNode
   sub: string
   status: string
   phase: RoutingPhase
+  /** When true, width follows title/sub/status instead of growing to fill the row. */
+  shrinkToContent?: boolean
 }) {
   return (
-    <div className="min-w-0 flex-1">
+    <div className={cn("min-w-0", shrinkToContent ? "w-max max-w-full" : "flex-1")}>
       <p className="text-[11px] font-semibold leading-tight text-[#2f3137]">{title}</p>
       <p className="mt-0.5 text-[10px] leading-snug text-[#6b6d75]">{sub}</p>
       <p
@@ -144,14 +173,15 @@ function TimelineRail({
   )
 }
 
-/** Vertical rail; Faculty Dean and Auto-delegate share one row (side by side). */
+/** Branch: left stack Dean → Head of TTO; right stack Auto-delegate → Rule (Rule sits under Auto text). */
 function VerticalApprovalTimeline({ rule }: { rule: TimeoutRoutingRule }) {
   const steps = SIGNATURE_ROUTING_STEPS
   const beforePair = steps.slice(0, 2)
-  
+
   const dean = steps[2]!
   const autoDelegate = steps[3]!
-  const afterPair = steps.slice(4)
+  const headOfTto = steps[4]!
+  const tailSteps = steps.slice(5)
 
   return (
     <ol className="m-0 flex w-full min-w-0 list-none flex-col p-0" aria-label="Approval order">
@@ -162,48 +192,70 @@ function VerticalApprovalTimeline({ rule }: { rule: TimeoutRoutingRule }) {
         </li>
       ))}
 
-      <li className="flex w-full min-w-0 gap-3 pb-3">
-        <TimelineRail phase={dean.phase} connectorHeightClass="h-8" />
-        <div className="relative grid min-w-0 flex-1 grid-cols-2 gap-2 sm:gap-3">
-          <StepBlock
-            title={
-              <>
-                {dean.title}
-                <span className="ml-[30px] inline-block text-neutral-500">{".........."}</span>
-              </>
-            }
-            sub={dean.sub}
-            status={dean.status}
-            phase={dean.phase}
-          />
-          <div className="relative min-w-0">
-            <StepBlock
-              title={autoDelegate.title}
-              sub={autoDelegate.sub}
-              status={autoDelegate.status}
-              phase={autoDelegate.phase}
-            />
-            <div
-              className={cn(
-                "absolute left-0 top-full z-10 mt-4 w-full max-w-[min(100%,17.5rem)] rounded-xl border border-[#e8e8ec] bg-white p-3 text-[9px] leading-none text-[#6b6d75]",
-                "elevation-lg"
-              )}
-            >
-              <p className="text-[9px] font-semibold uppercase tracking-[0.04em] text-[#6b6d75]">
-                Rule:
-              </p>
-              <div className="mt-2 space-y-1.5">
-                <div className="flex flex-wrap items-center gap-1">
-                  <span>If</span>
-                  <LogicPill tone="neutral">{rule.idlePhrase}</LogicPill>
-                </div>
-                <div className="flex flex-wrap items-center gap-1">
-                  <span>after</span>
-                  <LogicPill tone="numeric">{rule.afterDisplay}</LogicPill>
-                </div>
-                <div className="flex flex-wrap items-center gap-1">
-                  <span>then</span>
-                  <LogicPill tone="accent">{rule.outcomePhrase}</LogicPill>
+      <li className="w-full min-w-0 pb-3">
+        <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-start sm:gap-3">
+          <div className="flex min-w-0 flex-1 flex-col gap-3 sm:min-w-[46%]">
+            <div className="flex min-w-0 gap-3">
+              <TimelineRail phase={dean.phase} connectorHeightClass="h-8" />
+              <StepBlock title={dean.title} sub={dean.sub} status={dean.status} phase={dean.phase} />
+            </div>
+            <div className="flex min-w-0 gap-3">
+              <TimelineRail phase={headOfTto.phase} connectorHeightClass="h-0" />
+              <StepBlock
+                title={headOfTto.title}
+                sub={headOfTto.sub}
+                status={headOfTto.status}
+                phase={headOfTto.phase}
+              />
+            </div>
+          </div>
+          <div className="flex min-w-0 flex-col gap-2 self-start">
+            <div className="flex min-w-0 gap-3">
+              <TimelineRail phase={autoDelegate.phase} connectorHeightClass="h-0" />
+              <StepBlock
+                title={autoDelegate.title}
+                sub={autoDelegate.sub}
+                status={autoDelegate.status}
+                phase={autoDelegate.phase}
+                shrinkToContent
+              />
+            </div>
+            {/* Rule: same left edge as timeline dot; width matches icon + Auto-delegate row */}
+            <div className="min-w-0 w-full">
+              <div
+                className={cn(
+                  "rounded-lg border border-[#e8e8ec] bg-white p-2 text-[8px] leading-snug text-[#6b6d75] sm:p-2.5 sm:text-[9px]",
+                  "elevation-lg w-full min-w-0 max-w-full"
+                )}
+              >
+                <p className="text-[8px] font-semibold uppercase tracking-[0.04em] text-[#6b6d75] sm:text-[9px]">
+                  Rule
+                </p>
+                <div className="mt-1.5 space-y-2 sm:mt-2">
+                  <div className="flex w-full min-w-0 flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                    <RuleKeywordPill kind="IF">IF</RuleKeywordPill>
+                    <div className="self-end sm:self-auto">
+                      <LogicPill tone="neutral" compact>
+                        {rule.idlePhrase}
+                      </LogicPill>
+                    </div>
+                  </div>
+                  <div className="flex w-full min-w-0 flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                    <RuleKeywordPill kind="AFTER">AFTER</RuleKeywordPill>
+                    <div className="self-end sm:self-auto">
+                      <LogicPill tone="numeric" compact>
+                        {rule.afterDisplay}
+                      </LogicPill>
+                    </div>
+                  </div>
+                  <div className="flex w-full min-w-0 flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                    <RuleKeywordPill kind="THEN">THEN</RuleKeywordPill>
+                    <div className="self-end sm:self-auto">
+                      <LogicPill tone="accent" compact>
+                        {rule.outcomePhrase}
+                      </LogicPill>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -211,8 +263,8 @@ function VerticalApprovalTimeline({ rule }: { rule: TimeoutRoutingRule }) {
         </div>
       </li>
 
-      {afterPair.map((step, i) => {
-        const isLast = i === afterPair.length - 1
+      {tailSteps.map((step, i) => {
+        const isLast = i === tailSteps.length - 1
         return (
           <li key={step.n} className="flex w-full min-w-0 gap-3 pb-3 last:pb-0">
             <div className="flex w-5 shrink-0 flex-col items-center pt-1">
@@ -246,8 +298,8 @@ export function SignatureRoutingVisual({
         className
       )}
     >
-      <div className="min-h-0 flex flex-1 items-center justify-center">
-        <div className="mx-auto w-full max-w-[22rem]">
+      <div className="min-h-0 flex flex-1 items-start justify-center px-0.5 pt-1 sm:items-center sm:pt-0">
+        <div className="mx-auto w-full min-w-0 max-w-[min(100%,28rem)]">
           <VerticalApprovalTimeline rule={timeoutRule} />
         </div>
       </div>

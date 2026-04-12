@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import * as React from "react"
 import {
   ClipboardList,
@@ -52,10 +51,13 @@ const FEATURES: {
   },
 ]
 
-const MEDIA_H = "min-h-[390px] h-[440px]"
+/** Taller single-column (md–below-lg); compact when three-up from lg */
+const MEDIA_H =
+  "min-h-[360px] h-[420px] md:min-h-[400px] md:h-[460px] lg:min-h-[390px] lg:h-[440px]"
 
 function VisualBots() {
-  const workflows = ["Disclosure", "Evaluation", "Marketing", "Licensing"] as const
+  /** Short labels so stage pills fit narrow feature-card columns */
+  const workflows = ["Disclose", "Evaluate", "Market", "License"] as const
   const DISCLOSURE_MS = {
     compose: 2200,
     running: 2400,
@@ -323,8 +325,8 @@ function VisualBots() {
   }
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center px-4 pb-4 pt-4">
-      <div className="flex w-full max-w-[20rem] items-center justify-center gap-2">
+    <div className="flex h-full w-full flex-col items-center justify-center px-2 pb-3 pt-3 sm:px-4 sm:pb-4 sm:pt-4">
+      <div className="flex w-full max-w-[18rem] items-stretch justify-center gap-1 sm:max-w-[20rem] sm:gap-1.5">
         {workflows.map((w, idx) => {
           const status = statusFor(idx)
           return (
@@ -333,7 +335,7 @@ function VisualBots() {
               key={w}
               onClick={() => jumpToStage(idx)}
               className={cn(
-                "inline-flex h-6 w-[calc((100%-0.5rem)/4)] min-w-0 items-center justify-center gap-0.5 rounded-full border px-1 py-0 text-[9px] font-medium leading-none shadow-sm transition-colors",
+                "inline-flex min-h-0 min-w-0 flex-1 basis-0 flex-col items-center justify-center gap-0.5 rounded-full border px-0.5 py-1 text-[7px] font-medium leading-tight shadow-sm transition-colors sm:flex-row sm:px-1 sm:py-1 sm:text-[8px]",
                 "cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300",
                 status === "done" && "border-emerald-300 bg-emerald-50 text-emerald-800",
                 status === "ai" && "border-violet-200 bg-violet-50 text-violet-800",
@@ -342,15 +344,15 @@ function VisualBots() {
               )}
             >
               {status === "ai" ? (
-                <Sparkles className="h-2 w-2 animate-pulse shrink-0" />
+                <Sparkles className="h-2 w-2 shrink-0 animate-pulse sm:h-2.5 sm:w-2.5" />
               ) : status === "running" ? (
-                <Spinner className="size-2 shrink-0" />
+                <Spinner className="size-2 shrink-0 sm:size-2.5" />
               ) : status === "done" ? (
-                <CheckCircle2 className="h-2 w-2 shrink-0" />
+                <CheckCircle2 className="h-2 w-2 shrink-0 sm:h-2.5 sm:w-2.5" />
               ) : (
-                <span className="h-1 w-1 rounded-full bg-current/60 shrink-0" />
+                <span className="h-1 w-1 shrink-0 rounded-full bg-current/60" />
               )}
-              <span>{w}</span>
+              <span className="max-w-full truncate text-center">{w}</span>
             </button>
           )
         })}
@@ -583,20 +585,21 @@ export default function ProductFeaturesSection() {
   }, [])
 
   return (
-    <div ref={rootRef} className="mx-auto max-w-7xl px-6">
+    <div ref={rootRef} className="mx-auto min-w-0 max-w-7xl px-4 sm:px-6 lg:px-10 xl:px-8">
       <div className="mb-12 text-center md:mb-14">
         <p className="text-xs font-medium uppercase tracking-[0.14em] text-[#55565d]">Features</p>
         <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-[-0.04em] text-[#2f3137] md:text-5xl">
-            Tech transfer made <br /> efficient, transparent, and scalable.
+          Tech transfer made <br />
+          efficient, transparent, and scalable.
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-7">
+      <div className="grid min-w-0 grid-cols-1 items-stretch gap-6 lg:grid-cols-3 lg:gap-7">
         {FEATURES.map((f, i) => (
           <article
             key={f.key}
             className={cn(
-              "group flex flex-col overflow-hidden rounded-2xl border border-[#e8e8ec] bg-[#f3f3f5]/90",
+              "group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#e8e8ec] bg-[#f3f3f5]/90",
               "shadow-[0_1px_0_rgba(0,0,0,.04),0_12px_40px_rgba(26,34,48,.06)]",
               "transition-[opacity,transform,box-shadow] duration-500 ease-out will-change-transform",
               "hover:-translate-y-0.5 hover:shadow-[0_12px_48px_rgba(26,34,48,.1)]",
@@ -606,19 +609,19 @@ export default function ProductFeaturesSection() {
               transitionDelay: visible ? `${i * 75}ms` : "0ms",
             }}
           >
-            <div
-              className={cn(
-                "shrink-0 overflow-hidden border-b border-[#e8e8ec] bg-gradient-to-b from-white to-[#f6f6f8]",
-                MEDIA_H
-              )}
-            >
-              <FeatureVisual kind={f.visual} />
-            </div>
-            <div className="flex flex-1 flex-col p-6 text-left">
+            <div className="shrink-0 p-6 text-left">
               <h3 className="text-lg font-semibold tracking-[-0.02em] text-[#2f3137] md:text-xl">
                 {f.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#4c4d56] md:text-[15px]">{f.blurb}</p>
+            </div>
+            <div
+              className={cn(
+                "mt-auto min-h-0 shrink-0 overflow-x-clip overflow-y-auto bg-gradient-to-b from-white to-[#f6f6f8]",
+                MEDIA_H
+              )}
+            >
+              <FeatureVisual kind={f.visual} />
             </div>
           </article>
         ))}

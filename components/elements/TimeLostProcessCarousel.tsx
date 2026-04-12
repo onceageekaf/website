@@ -113,12 +113,12 @@ export default function TimeLostProcessCarousel({
   return (
     <div
       className={cn(
-        "relative flex h-full min-h-[200px] w-full cursor-default select-none flex-col items-center justify-center px-4 py-5",
+        "relative flex h-full min-h-[200px] w-full min-w-0 cursor-default select-none flex-col items-center justify-center px-3 py-4 sm:px-4 sm:py-5",
         panelClassName,
         className
       )}
     >
-      <div className="relative z-10 flex w-full max-w-md flex-col items-stretch gap-6">
+      <div className="relative z-10 flex w-full min-w-0 max-w-md flex-col items-stretch gap-4 sm:gap-6">
         <div
           className={cn(
             "relative z-[8] w-full origin-bottom scale-[0.88] opacity-[0.62]",

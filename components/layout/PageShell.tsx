@@ -18,7 +18,7 @@ export default function PageShell({
   const widthClass = LAYOUT_WIDTHS[width] ?? LAYOUT_WIDTHS.cards
 
   return (
-    <div className={cn("mx-auto w-full px-6", widthClass, className)}>
+    <div className={cn("mx-auto w-full min-w-0 px-4 sm:px-6 lg:px-10 xl:px-8", widthClass, className)}>
       {children}
     </div>
   )

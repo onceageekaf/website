@@ -3,8 +3,8 @@ import { OutcomeVarianceVisual } from "@/components/elements/OutcomeVarianceVisu
 import TimeLostProcessCarousel from "@/components/elements/TimeLostProcessCarousel"
 import ReduceManualWorkBrickWall from "@/components/elements/ReduceManualWorkBrickWall"
 
-/** Fixed layout: all cards share these heights */
-const SKELETON_PX = "h-[240px]"
+/** Visual strip: taller stacked cards below lg; compact strip when three-up from lg */
+const SKELETON_PX = "max-lg:h-[260px] max-lg:min-h-[260px] lg:h-[240px] lg:min-h-[240px]"
 const TEXT_MIN = "min-h-[152px]"
 
 type Card = {
@@ -59,12 +59,12 @@ function CardSkeleton({ variant }: { variant: Card["skeleton"] }) {
 
 export default function FeatureTriadCards() {
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-5 md:items-stretch lg:gap-6">
+    <div className="grid min-w-0 grid-cols-1 items-stretch gap-6 lg:grid-cols-3 lg:gap-6">
       {CARDS.map((card) => (
         <article
           key={card.key}
           className={cn(
-            "flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-[#e8e8ec] bg-[#f3f3f5]/90",
+            "flex h-full min-h-0 min-w-0 flex-col overflow-hidden rounded-2xl border border-[#e8e8ec] bg-[#f3f3f5]/90",
             "shadow-[0_1px_0_rgba(0,0,0,.04),0_12px_40px_rgba(26,34,48,.06)]"
           )}
         >

@@ -8,6 +8,7 @@ import InventorDashboard from "@/components/sections/Dashboard/Inventor"
 import ProductFeaturesSection from "@/components/elements/ProductFeaturesSection"
 import ContractLogicEngineSection from "@/components/sections/ContractLogicEngineSection"
 import CleEngagementSection from "@/components/sections/CleEngagementSection"
+import DeepTechInfrastructureCtaSection from "@/components/sections/DeepTechInfrastructureCtaSection"
 import VisionContactSection from "@/components/sections/VisionContactSection"
 import Footer from "@/components/layout/Footer"
 import HeroExploreCTA from "@/components/elements/HeroExploreCTA"
@@ -23,9 +24,9 @@ export default function page() {
         <DotBackground />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(246,246,247,0)_42%,rgba(246,246,247,0.9)_85%,rgba(246,246,247,1)_100%)]" />
 
-        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-6 py-16 md:py-24">
+        <div className="relative z-10 mx-auto flex min-w-0 w-full max-w-7xl flex-1 flex-col justify-center px-4 sm:px-6 lg:px-10 xl:px-8 py-16 md:py-24">
           <div className="relative flex flex-col items-center text-center">
-            <div className="relative z-20 mx-auto w-full max-w-4xl">
+            <div className="relative z-20 mx-auto w-full min-w-0 max-w-4xl">
               {/* <p className="mb-8 inline-flex items-center gap-2 text-sm text-[#55565d]">
                 Introducing tech transfer operating system
                 <span className="animate-hero-arrow" aria-hidden="true">
@@ -33,18 +34,18 @@ export default function page() {
                 </span>
               </p> */}
 
-              <h1 className="text-5xl font-semibold leading-[1.05] tracking-[-0.06em] text-[#2f3137] md:text-6xl xl:text-7xl">
-                <span className="block whitespace-nowrap">
+              <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.06em] text-[#2f3137] min-w-0 sm:text-5xl md:text-6xl lg:text-[clamp(2.5rem,4vw+1rem,3.75rem)] xl:text-7xl">
+                <span className="block lg:whitespace-nowrap">
                   From{" "}
                   <span className={cn(dmSerifDisplay.className, "italic")}>invention</span>
                 </span>
-                <span className="block whitespace-nowrap">
+                <span className="block lg:whitespace-nowrap">
                   to{" "}
                   <span className={cn(dmSerifDisplay.className, "italic")}>production</span>
                 </span>
               </h1>
 
-              <p className="mx-auto mt-2 max-w-3xl text-2xl leading-relaxed text-[#4c4d56]">
+              <p className="mx-auto mt-2 max-w-3xl min-w-0 text-xl leading-relaxed text-[#4c4d56] sm:text-2xl">
                 Infrastructure for research translation
               </p>
 
@@ -129,11 +130,11 @@ export default function page() {
 
       <section
         id="dashboard-preview"
-        className="relative z-10 mx-auto w-full max-w-7xl scroll-mt-24 px-6 pb-10 pt-2 md:pb-14 md:pt-4"
+        className="relative z-10 mx-auto min-w-0 w-full max-w-7xl scroll-mt-24 px-4 sm:px-6 lg:px-10 xl:px-8 pb-10 pt-2 md:pb-14 md:pt-4"
         aria-label="Inventor dashboard"
       >
         <ScrollReveal>
-          <div className="mx-[50px] overflow-hidden rounded-2xl border border-[#dfdfe3] bg-white elevation-lg max-sm:mx-4">
+          <div className="mx-auto min-w-0 max-w-full overflow-hidden rounded-2xl border border-[#dfdfe3] bg-white elevation-lg">
             <div className="flex h-10 shrink-0 items-center justify-between border-b border-[#e3e4e8] bg-white/90 px-3">
               <div className="flex items-center gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" aria-hidden="true" />
@@ -167,11 +168,11 @@ export default function page() {
         </ScrollReveal>
       </section>
       {/* Why ttOS */}
-      <section className="relative overflow-hidden py-16 md:py-24">
+      <section className="relative overflow-x-clip overflow-y-visible py-16 md:py-24">
         <DotBackground />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(246,246,247,0)_42%,rgba(246,246,247,0.9)_85%,rgba(246,246,247,1)_100%)]" />
-        <div className="relative z-10 mx-auto max-w-7xl ">
-          <div className="text-center mb-30 mt-30">
+        <div className="relative z-10 mx-auto min-w-0 max-w-7xl px-4 sm:px-6 lg:px-10 xl:px-8">
+          <div className="mb-10 mt-6 text-center md:mb-14 md:mt-10 lg:mb-16 lg:mt-12">
             <h2 className="text-3xl font-semibold leading-tight tracking-[-0.04em] text-[#2f3137] md:text-5xl">
               Breakthrough inventions move fast.
             </h2>
@@ -184,17 +185,19 @@ export default function page() {
         </div>
       </section>
 
-      <section id="product-features" className="relative overflow-hidden py-16 md:py-24 scroll-mt-24">
+      <VisionContactSection />
+
+      <section id="product-features" className="relative overflow-x-clip overflow-y-visible py-16 md:py-24 scroll-mt-24">
         <DotBackground />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(246,246,247,0)_42%,rgba(246,246,247,0.9)_85%,rgba(246,246,247,1)_100%)]" />
-        <div className="relative z-10">
+        <div className="relative z-10 min-w-0">
           <ProductFeaturesSection />
         </div>
       </section>
 
       <ContractLogicEngineSection />
       <CleEngagementSection />
-      <VisionContactSection />
+      <DeepTechInfrastructureCtaSection />
       <Footer />
     </main>
   )

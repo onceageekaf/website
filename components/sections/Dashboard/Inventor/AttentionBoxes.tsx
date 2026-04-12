@@ -75,7 +75,7 @@ export default function AttentionBoxes({ items, onSelect, selectedKey }: Props) 
   return (
     <div className="mx-auto mt-10 w-full max-w-[980px] px-2">
       {/* ✅ 3-up on lg, centered */}
-      <div className="grid grid-cols-1 gap-3 place-items-center sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-3 place-items-center lg:grid-cols-3">
         {data.map((b) => {
           const Icon = b.icon;
           const isActive = selectedKey ? selectedKey === b.key : !!b.active;
