@@ -258,7 +258,7 @@ function CleMiniDiffCalloutEmerald({ children }: { children: React.ReactNode }) 
 }
 
 const VARIANCE_REQUEST_COPY =
-  "Total of 35 issued patents and patent expenses that need to be reimbursed is $500,000.\n15 provisionals filed and pending.\nLarge patent portfolio.\nLead investor wants to issue equity to cover patent costs on exclusive licensing terms. Currently at 15% for exclusive license for Field of use."
+  "Total of 10 issued patents and patent expenses that need to be reimbursed is $500,000.\n15 provisionals filed and pending.\nLarge patent portfolio.\nLead investor wants to issue equity to cover patent costs on exclusive licensing terms. Currently at 15% for exclusive license for Field of use."
 
 function CleVarianceTypewriter() {
   const [len, setLen] = React.useState(0)
@@ -371,7 +371,7 @@ function CleDiffCompareVisual() {
   ]
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col justify-end" aria-hidden>
+    <div className="flex min-h-0 flex-1 flex-col justify-start" aria-hidden>
       <CleMiniDiffTable
         caption="Clause 4.1 · Licence Grant"
         colLeft="Your template"
@@ -423,7 +423,7 @@ function CleDealContextVisual() {
   ]
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col justify-end" aria-hidden>
+    <div className="flex min-h-0 flex-1 flex-col justify-start" aria-hidden>
       <CleMiniDiffTable
         caption="Clause 10 · Warranty & indemnity"
         colLeft="Risk rule set"
@@ -453,7 +453,7 @@ function CleGovernanceVisual() {
   const thresholdLeftPct = (EQUITY_POLICY_PCT / EQUITY_MAX) * 100
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col justify-between gap-4">
+    <div className="flex min-h-0 flex-1 flex-col">
       <div className="min-w-0">
         <div className="mb-1.5 flex items-baseline justify-between gap-2">
           <span className="text-[9px] font-semibold uppercase tracking-[0.1em] text-white/40 sm:text-[10px]">
@@ -517,60 +517,6 @@ function CleGovernanceVisual() {
         </div>
         <CleVarianceTypewriter />
       </div>
-
-      <fieldset className="min-w-0 border-0 p-0">
-        <legend className="mb-1.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-white/40 sm:text-[10px]">
-          Improvements
-        </legend>
-        <div className="flex flex-col gap-2">
-          <label className="flex cursor-pointer items-start gap-2 text-[10px] leading-snug text-white/65 sm:text-[11px]">
-            <input
-              type="radio"
-              name="cle-governance-improvements"
-              value="uni"
-              className="mt-0.5 h-3 w-3 shrink-0 border-white/20 bg-white/[0.06] text-emerald-500 focus-visible:ring-1 focus-visible:ring-sky-400"
-            />
-            <span>Uni owns</span>
-          </label>
-          <div className="group relative">
-            <label
-              className="flex cursor-not-allowed items-start gap-2 text-[10px] leading-snug text-white/35 sm:text-[11px]"
-              title="Outside of policy"
-            >
-              <input
-                type="radio"
-                name="cle-governance-improvements"
-                value="licensee"
-                disabled
-                aria-label="Licensee owns, outside of policy, not available"
-                className="mt-0.5 h-3 w-3 shrink-0 cursor-not-allowed opacity-50"
-              />
-              <span>Licensee owns</span>
-            </label>
-            <div
-              className="pointer-events-none absolute bottom-full left-0 z-30 mb-1.5 max-w-[13rem] rounded-md border border-rose-500/35 bg-[#141418] px-2 py-1.5 text-[9px] leading-snug text-rose-100/95 opacity-0 shadow-[0_8px_24px_rgba(0,0,0,.45)] transition-opacity duration-150 group-hover:opacity-100 sm:text-[10px]"
-              role="tooltip"
-            >
-              Outside of policy
-            </div>
-          </div>
-          <label className="flex cursor-pointer items-start gap-2 text-[10px] leading-snug text-white/80 sm:text-[11px]">
-            <input
-              type="radio"
-              name="cle-governance-improvements"
-              value="developer"
-              defaultChecked
-              className="mt-0.5 h-3 w-3 shrink-0 border-white/20 bg-white/[0.06] text-emerald-500 focus-visible:ring-1 focus-visible:ring-sky-400"
-            />
-            <span className="flex flex-wrap items-center gap-1.5">
-              Based on who develops
-              <span className="rounded border border-emerald-500/35 bg-emerald-500/15 px-1 py-px text-[8px] font-semibold uppercase tracking-wide text-emerald-200/90">
-                Preferred
-              </span>
-            </span>
-          </label>
-        </div>
-      </fieldset>
     </div>
   )
 }
@@ -605,7 +551,6 @@ function CleFeatureSkeletonCard({ item }: { item: CleFeatureCardSpec }) {
       className={cn(
         "flex h-full min-w-0 flex-col rounded-2xl border border-white/[0.08] bg-white/[0.035] p-5 sm:p-6 lg:p-5 xl:p-7",
         CLE_FEATURE_CARD_MIN_H,
-        visual === "governance" && "overflow-visible"
       )}
     >
       <div className="shrink-0 border-b border-white/[0.06] pb-3 lg:pb-3.5 xl:pb-4">
