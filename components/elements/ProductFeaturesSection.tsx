@@ -617,8 +617,10 @@ export default function ProductFeaturesSection() {
             </div>
             <div
               className={cn(
-                "mt-auto min-h-0 shrink-0 overflow-x-clip overflow-y-auto bg-gradient-to-b from-white to-[#f6f6f8]",
-                MEDIA_H
+                "mt-auto min-h-0 shrink-0 overflow-x-clip bg-gradient-to-b from-white to-[#f6f6f8]",
+                f.visual === "routing"
+                  ? "h-auto overflow-visible lg:min-h-[390px] lg:h-[440px] lg:overflow-y-auto"
+                  : cn("overflow-y-auto", MEDIA_H)
               )}
             >
               <FeatureVisual kind={f.visual} />

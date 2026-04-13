@@ -4,7 +4,7 @@ export default function AcademyPage() {
   return (
     <main className="min-h-screen bg-[#f6f6f7] text-[#2a2a2f]">
       <Navbar />
-      <div className="mx-auto max-w-7xl px-6 py-10 pb-16">
+      <div className="mx-auto max-w-7xl px-4 py-10 pb-16 sm:px-6">
         <h1 className="text-3xl font-semibold tracking-tight text-[#2f3137]">
           Academy
         </h1>

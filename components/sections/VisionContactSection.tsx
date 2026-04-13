@@ -35,7 +35,7 @@ export default function VisionContactSection() {
               <h2
                 id="manifesto-heading"
                 className={cn(
-                  "whitespace-nowrap text-center font-sans text-4xl font-semibold",
+                  "text-center font-sans text-3xl font-semibold sm:text-4xl",
                   "leading-[1.1] tracking-[-0.06em] text-[#2f3137] md:text-left md:text-5xl lg:text-6xl"
                 )}
               >

@@ -86,7 +86,7 @@ function RuleKeywordPill({ kind, children }: { kind: keyof typeof RULE_KEYWORD_P
   return (
     <span
       className={cn(
-        "inline-flex shrink-0 items-center rounded-md border px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wide sm:text-[9px]",
+        "inline-flex shrink-0 self-start items-center rounded-md border px-1.5 py-0.5 text-[8px] font-semibold uppercase tracking-wide sm:text-[9px]",
         RULE_KEYWORD_PILL[kind]
       )}
     >
@@ -193,8 +193,8 @@ function VerticalApprovalTimeline({ rule }: { rule: TimeoutRoutingRule }) {
       ))}
 
       <li className="w-full min-w-0 pb-3">
-        <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-start sm:gap-3">
-          <div className="flex min-w-0 flex-1 flex-col gap-3 sm:min-w-[46%]">
+        <div className="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
+          <div className="flex min-w-0 flex-col gap-3">
             <div className="flex min-w-0 gap-3">
               <TimelineRail phase={dean.phase} connectorHeightClass="h-8" />
               <StepBlock title={dean.title} sub={dean.sub} status={dean.status} phase={dean.phase} />
@@ -209,7 +209,7 @@ function VerticalApprovalTimeline({ rule }: { rule: TimeoutRoutingRule }) {
               />
             </div>
           </div>
-          <div className="flex min-w-0 flex-col gap-2 self-start">
+          <div className="flex min-w-0 w-max max-w-full -ml-6 flex-col gap-2 self-start sm:ml-0">
             <div className="flex min-w-0 gap-3">
               <TimelineRail phase={autoDelegate.phase} connectorHeightClass="h-0" />
               <StepBlock
@@ -232,25 +232,25 @@ function VerticalApprovalTimeline({ rule }: { rule: TimeoutRoutingRule }) {
                   Rule
                 </p>
                 <div className="mt-1.5 space-y-2 sm:mt-2">
-                  <div className="flex w-full min-w-0 flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                  <div className="flex w-full min-w-0 items-center justify-between gap-2">
                     <RuleKeywordPill kind="IF">IF</RuleKeywordPill>
-                    <div className="self-end sm:self-auto">
+                    <div className="shrink-0">
                       <LogicPill tone="neutral" compact>
                         {rule.idlePhrase}
                       </LogicPill>
                     </div>
                   </div>
-                  <div className="flex w-full min-w-0 flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                  <div className="flex w-full min-w-0 items-center justify-between gap-2">
                     <RuleKeywordPill kind="AFTER">AFTER</RuleKeywordPill>
-                    <div className="self-end sm:self-auto">
+                    <div className="shrink-0">
                       <LogicPill tone="numeric" compact>
                         {rule.afterDisplay}
                       </LogicPill>
                     </div>
                   </div>
-                  <div className="flex w-full min-w-0 flex-col gap-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                  <div className="flex w-full min-w-0 items-center justify-between gap-2">
                     <RuleKeywordPill kind="THEN">THEN</RuleKeywordPill>
-                    <div className="self-end sm:self-auto">
+                    <div className="shrink-0">
                       <LogicPill tone="accent" compact>
                         {rule.outcomePhrase}
                       </LogicPill>
@@ -294,7 +294,7 @@ export function SignatureRoutingVisual({
   return (
     <div
       className={cn(
-        "flex h-full w-full min-w-0 flex-col overflow-y-auto overflow-x-hidden border border-[#e8e8ec] bg-white p-3.5 sm:p-4",
+        "flex h-auto w-full min-w-0 flex-col overflow-visible overflow-x-hidden border border-[#e8e8ec] bg-white p-3.5 sm:h-full sm:overflow-y-auto sm:p-4",
         className
       )}
     >
