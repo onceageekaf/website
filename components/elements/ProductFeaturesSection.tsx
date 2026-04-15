@@ -32,7 +32,7 @@ const FEATURES: {
     key: "bots",
     title: "Automation Agents",
     blurb:
-      "Fix manual work across disclosure, evaluation, marketing, and licensing with guided automated workflows.",
+      "Nobody likes filling forms. ttOS fills them for you across disclosure, evaluation, marketing, and licensing.",
     visual: "bots",
   },
   {

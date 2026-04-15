@@ -6,10 +6,13 @@ import PageShell from "@/components/layout/PageShell";
 import Logo from "@/components/elements/Logo";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import { CALENDLY_URL } from "@/lib/siteLinks";
 
 const NAV_ITEMS = [
-  { label: "System", href: "/#product-features" },
-  { label: "Atomfactory", href: "/#manufacturing" },
+  { label: "For TTOs", href: "/for-ttos" },
+  { label: "System", href: "/system" },
+  { label: "Atomfactory", href: "/atomfactory" },
+  { label: "Example", href: "/example" },
 ];
 
 export default function Navbar() {
@@ -46,10 +49,10 @@ export default function Navbar() {
         <div className="ml-auto flex items-center gap-2">
           {/* CTA stays visible on all sizes */}
           <Link
-            href="mailto:?subject=Contact%20us"
+            href={CALENDLY_URL}
             className="inline-flex h-8 items-center rounded-xl bg-[#2f3137] px-3 text-xs font-medium text-white shadow-[0_1px_0_rgba(0,0,0,.08),0_8px_24px_rgba(47,49,55,.28)] transition hover:bg-[#212329] sm:h-9 sm:px-4 sm:text-sm"
           >
-            Contact us
+            Set up a call
           </Link>
 
           {/* Hamburger (mobile only) */}
