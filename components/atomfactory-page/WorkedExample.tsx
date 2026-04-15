@@ -43,6 +43,11 @@ export default function WorkedExample() {
           Read the full roadmap → Download the complete worked example (PDF, 25 pages)
         </Link>
       </p>
+      <p className="mt-2 text-base font-semibold text-[#2f3137]">
+        <Link href="/atomfactory_worked_example.docx" className="underline underline-offset-2">
+          Download the worked example (DOCX)
+        </Link>
+      </p>
     </Section>
   )
 }
