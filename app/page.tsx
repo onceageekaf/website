@@ -197,7 +197,7 @@ export default function page() {
 
       <ContractLogicEngineSection />
       <CleEngagementSection />
-      <DeepTechInfrastructureCtaSection />
+      
       <Footer />
     </main>
   )
