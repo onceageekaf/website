@@ -41,7 +41,7 @@ export default function page() {
                 </span>
                 <span className="block lg:whitespace-nowrap">
                   to{" "}
-                  <span className={cn(dmSerifDisplay.className, "italic")}>production</span>
+                  <span className={cn(dmSerifDisplay.className, "italic")}>license</span>
                 </span>
               </h1>
 
