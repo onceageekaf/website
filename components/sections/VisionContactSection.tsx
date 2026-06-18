@@ -52,7 +52,7 @@ export default function VisionContactSection() {
                   on a system that wasn&apos;t designed for them. For the naysayers, name an invention for the operation of technology transfer offices. 
                 </p>
                 <p className="mt-7 text-pretty text-center text-xl font-normal leading-relaxed tracking-[-0.02em] text-[#2f3137] md:mt-8 md:text-left md:text-2xl md:leading-snug">
-                  Fix the upstream and the downstream compounds. The ecosystem below is already fast.{" "} <br />
+                  Fix the upstream and the downstream compounds. The venture ecosystem is at a different clock speed to the academic clock speed.{" "} <br />
                   <span className="font-semibold text-[#1c2230] mt-4 block">ttOS makes the upstream match the speed - and the whole pipeline moves 10X.</span>
                 </p>
               </div>
