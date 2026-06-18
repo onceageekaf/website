@@ -43,7 +43,7 @@ export default function VisionContactSection() {
               </h2>
               <div className="relative mt-9 md:mt-11 md:border-l-2 md:border-sky-500/35 md:pl-8">
                 <p className="text-pretty text-center text-xl font-normal leading-relaxed tracking-[-0.02em] text-[#2f3137] md:text-left md:text-2xl md:leading-snug">
-                  The startup ecosystem has scaled beautifully. Thousands of VCs, incubators, and accelerators, all
+                  The startup ecosystem has scaled exponentally. Thousands of VCs, incubators, and accelerators, all
                   running the same proven playbook — plug-and-play infrastructure that turns ideas into companies.
                 </p>
                 <p className="mt-7 text-pretty text-center text-xl font-normal leading-relaxed tracking-[-0.02em] text-[#2f3137] md:mt-8 md:text-left md:text-2xl md:leading-snug">
