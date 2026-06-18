@@ -56,7 +56,7 @@ export default function DeepTechInfrastructureCtaSection() {
 
               <div className="shrink-0 flex flex-col items-center border-t border-[#e8eaef] pt-8 lg:border-t-0 lg:border-l lg:border-[#e8eaef] lg:pl-10 lg:pt-0">
                 <a
-                  href="mailto:?subject=Start%20a%20conversation"
+                  href="mailto:ash@ttos.ai?subject=Start%20a%20conversation"
                   className="inline-flex h-12 w-full max-w-full items-center justify-center rounded-xl bg-[#2f3137] px-6 text-base font-medium text-white shadow-[0_1px_0_rgba(0,0,0,.08),0_10px_28px_rgba(47,49,55,.25)] transition hover:bg-[#212329] sm:w-auto sm:px-8"
                 >
                   Start a conversation
