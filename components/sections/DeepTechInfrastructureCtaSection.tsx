@@ -42,15 +42,14 @@ export default function DeepTechInfrastructureCtaSection() {
                   id="deep-tech-infrastructure-heading"
                   className="text-balance text-3xl font-semibold leading-[1.12] tracking-[-0.04em] text-[#2f3137] md:text-4xl lg:text-[2.35rem] lg:leading-[1.1]"
                 >
-                  The missing layer in research translation.
+                  Free. Open-source. 
                 </h2>
                 <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-[#4c4d56] md:text-lg lg:mx-0">
                   Great teams and real breakthroughs stall every day — not because the science fails, but because the
-                  system around it does.{" "}
+                  system around it does. {" "}
                   <br />
                   <span className="mt-4 block font-semibold text-[#1c2230]">
-                    ttOS is the infrastructure that gets out of their way.
-                  </span>
+We want to empower licensing professionals. Lets build the system that we would like to have that no one has built for us.                  </span>
                 </p>
               </div>
 
