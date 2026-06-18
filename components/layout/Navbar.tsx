@@ -9,7 +9,7 @@ import { Menu, X } from "lucide-react";
 
 const NAV_ITEMS = [
   { label: "System", href: "/#product-features" },
-  { label: "Atomfactory", href: "/#manufacturing" },
+ /* { label: "Atomfactory", href: "/#manufacturing" } */
 ];
 
 export default function Navbar() {
